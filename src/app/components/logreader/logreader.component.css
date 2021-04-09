@@ -1,0 +1,374 @@
+
+#mainDiv {
+  display: flex;
+  /*background: url("../../../assets/dripanimation.gif") no-repeat center / cover;*/
+
+
+  flex-direction: column;
+  background-color: #000012;
+  background-image: linear-gradient(#000012, #0072bc);
+  /* min-height: 100vh; */
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s all;
+  padding: 40px;
+}
+
+#signout-button {
+
+  /*float: right;*/
+  margin-left: 5vw;
+  color: white;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 30px;
+  padding: 7px 35px;
+  outline: none;
+
+}
+
+.clear-btn {
+  float: right;
+  color: #fff;
+  /*background-color: #5e72e4;*/
+  border-radius: 2px;
+  padding: 10px 20px;
+  /*font-size: 11px;*/
+  /*cursor: pointer;*/
+  /*padding: 2px;*/
+  position: absolute;
+  font-size: 14px;
+  top: 10px;
+  right: 10px;
+  /*opacity: 0.7;*/
+  transition: 0.2s all;
+}
+
+.clear-btn:hover {
+  opacity: 1;
+}
+
+#DripInventoryHeader {
+  margin-left: 100px
+}
+
+.hover-action:hover {
+  transform: scale(1.2);
+}
+.hover-action2:hover {
+  transform: scale(1.1);
+}
+
+#signout-button:hover {
+  transform: scale(1.1);
+}
+
+#Connect {
+  width: max-content;
+  background-color: #22c248;
+  color: white
+}
+
+#Disconnect {
+  width: max-content;
+  background-color: red;
+  color: white;
+  margin-left: 20px;
+}
+
+#logScreen {
+
+  /* previous */
+  background: #011834 !important;
+  border-radius: 3px;
+  width: 50vw;
+  border: 1px solid #000012;
+  position: relative;
+  /*box-shadow: 0px 1px 15px #876d6d;*/
+  /* present */
+
+  /*border-radius: 3px;*/
+  /*width: 50vw;*/
+  /*border: #000012;*/
+  /*position: relative;*/
+  /*box-shadow: 0px 1px 15px #876d6d;*/
+  /*background-color: #000012;*/
+  /*background-image: linear-gradient(#000012, #0072bc);*/
+
+
+}
+
+.innerLogsDiv {
+  height: 396px;
+  overflow-y: auto;
+  padding: 20px 20px;
+  margin-top: 10px;
+}
+
+#DivButtons {
+
+  display: flex;
+  flex-direction: row;
+  margin-left: 80px;
+  margin-top: 20px
+}
+
+#table-wrapper {
+  position: relative;
+}
+
+#table-scroll {
+  height: 300px;
+  overflow: auto;
+  /*margin-top:20px;*/
+}
+
+#readerDiv {
+  opacity: 0.85;
+  margin-left: 10px;
+  background-color: white;
+  border-radius: 10px;
+  width: 27vw;
+  /*box-shadow: 0px 1px 15px #876d6d;*/
+  /*overflow-y: auto;*/
+}
+
+
+.orange {
+  color: orange;
+}
+
+.m-0 {
+  margin: 0 !important
+}
+
+.logsDiv {
+  /*border-top: 1px solid #3232329c;*/
+  /*border-bottom: 1px solid #3232323b;*/
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.red {
+  color: #ec1814;
+}
+
+.white {
+  color: white;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.green {
+  color: #22c248;
+}
+
+.gray {
+  color: grey;
+}
+
+.deletebtn {
+  color: red;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.readerStatus {
+  padding: 20px;
+}
+
+#logAndReader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 5vw;
+}
+
+
+@media screen and (max-width: 1000px) {
+
+  #logAndReader {
+    flex-direction: column;
+  }
+
+
+  #logScreen {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  #signout-button {
+    margin-left: 5vw
+  }
+
+  #logScreen {
+    width: 100%;
+  }
+
+  #readerDiv {
+    width: 100%;
+    margin: 0;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .header-welcome-text {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .innerLogsDiv {
+    margin-top: 40px;
+  }
+}
+
+.right-header {
+  margin-right: 250px;
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+
+.headerDiv {
+  width: 100%;
+  min-height: 80px;
+  height: 8vh;
+  /*padding: 10px;*/
+  background-color: #333;
+  display: flex;
+  flex-direction: row;
+
+}
+
+
+.dripInventoryHeader {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.ELPlogs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #0072bc;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 26px 20px !important;
+}
+
+.codeInTable {
+  font-weight: bold;
+  color: #000012;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.tableColumn {
+  font-weight: bold;
+  /*font-size: 0.65rem;*/
+  color: #000;
+  width: 5%;
+  font-size: 13px;
+}
+
+.cancelCode {
+  margin-left: 10px;
+  box-shadow: 0px 0px 3px #876d6d;
+  border: 1px solid #e3dada;
+  font-size: 17px;
+  border-radius: 5px;
+  color: #0d0b0b;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.readerConnected {
+  color: #22c248;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.readerDisconnected {
+  color: #ec1814;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.dripInventoryLogo {
+  width: 25px;
+  height: 40px;
+  margin-top: 19px;
+  margin-left: 9px;
+  outline: none;
+}
+
+.NoCodeScanned {
+  display: flex;
+  justify-content: center;
+  color: red;
+  margin-top: 100px;
+  font-weight: bold;
+  font-size: 20px
+}
+
+
+/*  HEADER STYLING */
+
+.main-header {
+  background-color: #000012;
+
+  opacity: 0.8;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+}
+
+.header-welcome-text h2 {
+  margin: 0;
+  font-size: 23px !important;
+}
+
+.header-logo img {
+  margin: 0 !important;
+}
+
+.header-profile img {
+  margin-left: 10px;
+}
+
+.header-profile p {
+  margin: 0;
+  color: #c4c4c4;
+  font-size: 12px;
+}
+
+.header-profile p small {
+  display: block;
+}
+
+/* HEADER CLOSED */

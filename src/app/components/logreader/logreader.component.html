@@ -1,0 +1,172 @@
+<div #headerClicked class="main-header">
+  <div class="header-logo">
+
+    <img src="assets/Logo.png" class="dripInventoryLogo">
+
+  </div>
+
+  <div class="header-welcome-text">
+
+    <h2 class="dripInventoryHeader">Welcome to Drip Inventory</h2>
+
+  </div>
+
+  <div class="header-profile">
+    <p>
+      {{email}}
+      <small>{{domain}}</small>
+    </p>
+
+    <!--    <img style="max-width: 100%;height: auto;border-radius: 50em;" src="assets/6.jpg" class="img-avatar"-->
+    <!--         alt="admin@bootstrapmaster.com"/>-->
+  </div>
+
+</div>
+
+<div id="mainDiv">
+
+  <div id="logAndReader">
+    <div id="logScreen">
+
+      <div class="clear-btn"> Reader Status: <span
+        [ngClass]="readerStatus=='Connected'?'readerConnected':'readerDisconnected'">{{readerStatus}}</span>
+      </div>
+
+      <div #div1 class="innerLogsDiv">
+        <p style="color:#fff;" *ngIf="loading">Waiting for Response....</p>
+        <div *ngFor="let item of myData;let i = index">
+
+          <div class="logsDiv">
+            <p *ngIf="item.logType=='connecting_reader'" class="orange m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='unable_to_connect_reader'" class="red m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='code'" class="green m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='deleted'" class="white m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='line'" class="white m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='backup_completed'" class="white bold m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='unverified_codes'" class="gray bold m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='error'" class="red bold m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='server'" class="orange bold m-0">{{item.log}}</p>
+            <p *ngIf="item.logType=='uploading_to_server'" class="green m-0">{{item.log}}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="readerDiv">
+      <div class="ELPlogs">
+        Scanned Codes
+      </div>
+      <!--        <div class="NoCodeScanned" *ngIf="codeArray.length<=0">-->
+      <!--          No Data Scanned yet-->
+      <!--        </div>-->
+      <!--        *ngIf="codeArray.length>0"-->
+      <div id="table-wrapper">
+        <div #div2 id="table-scroll">
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
+
+            <thead style="background-color: #f6f9fc">
+            <tr>
+              <th class="tableColumn">CODE</th>
+              <th class="tableColumn">TIME</th>
+              <th class="tableColumn">ACTION</th>
+            </tr>
+            </thead>
+            <tbody>
+            <ng-container *ngFor="let attempt of codeArray; let i = index">
+              <ng-container>
+                <tr id="{{attempt.codeScrollId}}">
+                  <td style="max-width: 100px">
+                    <div class="codeInTable"><span
+                      matTooltip="{{attempt.code}}">{{attempt.code}}</span></div>
+                  </td>
+                  <td>
+                    <div style="color: #000012;font-size: 13px">{{attempt.time | date: 'dd/MM/yyyy hh:mm' }}</div>
+
+                  </td>
+                  <td>
+                    <mat-icon (click)="openDeleteModal(deleteCode,i,attempt._id)" class="cancelCode">close
+                    </mat-icon>
+
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div>
+    <button id="signout-button"
+            mat-button
+            style="  background: #ec1814 !important;font-family: 'Montserrat', sans-serif"
+            (click)="openEndSession(endSession)">
+      End Session
+    </button>
+  </div>
+
+</div>
+
+
+<ng-template #deleteCode let-modal>
+
+  <div class="modal-header">
+    <h1 style="font-size: 16px;font-weight: bold" class="modal-title" id="modal-basic-title"> Delete Code </h1>
+  </div>
+
+  <div class="modal-body">
+    <h1 style="font-size: 16px;"> Are you sure you want to delete the code ?</h1>
+  </div>
+
+  <div class="modal-footer">
+    <button class="hover-action2" mat-button (click)="modal.dismiss('Dismissed')"
+            style="outline: none !important;background-color: #ec1814;color: white">Close
+    </button>
+    <button class="hover-action2" type="button" mat-button style="margin-left: 10px;outline: none !important;background-color: #22c248 ;color: white"
+            (click)="delete()"> Yes
+    </button>
+  </div>
+
+</ng-template>
+
+
+<ng-template #endSession let-modal>
+
+  <div class="modal-header">
+    <h1 style="font-size: 16px;font-weight: bold" class="modal-title" id="modal-basic-title">End Session</h1>
+  </div>
+
+  <div class="modal-body">
+    <h1 style="font-size: 16px;"> Are you sure you want to end the session ?</h1>
+  </div>
+
+  <div class="modal-footer">
+    <button class="hover-action2" mat-button color="primary" (click)="modal.dismiss('Dismissed')"
+            style="outline: none !important;background-color: #ec1814;color: white">Close
+    </button>
+    <button style="outline: none !important;background-color: #22c248;color: white;margin-left: 10px" class="hover-action" type="button" mat-button color="warn" (click)="signout()"> Yes</button>
+  </div>
+
+</ng-template>
+
+
+<ng-template #startSession let-modal>
+
+  <div class="modal-header">
+    <h1 style="font-size: 16px;font-weight: bold;margin-left: 50px" class="modal-title" id="modal-basic-title">Welcome
+      to Drip App</h1>
+  </div>
+
+
+  <div class="modal-footer">
+    <button class="hover-action" mat-button color="primary" (click)="modal.dismiss('Dismissed')"
+            style="outline: none !important;">Close
+    </button>
+  </div>
+
+</ng-template>
+

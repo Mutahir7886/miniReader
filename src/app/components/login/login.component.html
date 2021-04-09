@@ -1,0 +1,60 @@
+<div [ngStyle]="{'background': gifPlayed ?urlBackground:urlGif}" class="MainBackground">
+<!--  <div [ngStyle]="{'background': urlGif}" class="MainBackground">-->
+  <div *ngIf="gifPlayed" class="maindiv">
+    <form [formGroup]="formGroup1">
+
+      <h1 id="loginHeader">Drip Inventory</h1>
+      <input
+        class="input_text"
+        type="text"
+        placeholder="Enter your domain"
+        formControlName="domain"
+      >
+      <p class="domainError" *ngIf="domain?.errors?.cannotContainSpace">Domain is required
+        without spaces</p>
+
+
+      <input
+        class="input_text"
+        type="email"
+        placeholder="Enter your Email"
+        formControlName="email">
+
+
+      <p *ngIf="(email.dirty || email.touched) && email.invalid"
+         class="emailError">email is invalid. The required format is drip@gmail.com</p>
+
+
+      <input
+        class="input_text"
+        type="password"
+        placeholder="Enter your Password"
+        formControlName="password">
+      <p class="passwordRequiredError"
+         *ngIf="(password.dirty ||password.touched)&& (password?.errors?.minlength) && !password?.errors?.cannotContainSpace">
+        Password is Required (Minimum 5 characters)
+      </p>
+      <p class="domainError" *ngIf="password?.errors?.cannotContainSpace">Password can not have spaces</p>
+      <p class="domainError" *ngIf="password?.errors?.required && (password.touched||password.dirty)">Password is
+        Required</p>
+
+      <div class="mybuttons">
+
+        <button mat-button style="font-family: 'Montserrat', sans-serif"
+                class=" startSession" (click)="submit(formGroup1)"
+                [disabled]="formGroup1.invalid">Start Session
+        </button>
+        <!--      <div class="horizontalLine">-->
+        <!--      </div>-->
+        <!--      <p style="color: white;text-align: center"> Don't Have an account ? <a style="color: white" routerLink="/signup"> Signup </a></p>-->
+        <!--      <br>-->
+
+
+      </div>
+    </form>
+
+  </div>
+
+
+</div>
+
